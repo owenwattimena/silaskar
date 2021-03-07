@@ -37,7 +37,7 @@
 
     </div>
     <!-- /.row -->
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-6">
             <div class="card bg-gradient-info">
                 <div class="card-header border-0">
@@ -96,7 +96,7 @@
             </div>
         </div>
         <!-- /.col -->
-    </div>
+    </div> --}}
     <!-- /.row -->
 @endsection
 
