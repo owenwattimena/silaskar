@@ -188,6 +188,8 @@ class UserController extends Controller
 
     }
 
+    
+
     public function access(Request $request, $id){
         $user = User::findOrFail($id);
 
@@ -214,5 +216,72 @@ class UserController extends Controller
         ];
         
         return redirect()->route('user')->with($alert);
+    }
+
+    public function profile()
+    {
+        return view('user.profile');
+    }
+    public function profilePut(Request $request)
+    {
+
+        if($request->username == \Auth::user()->username )
+        {
+            $request->validate([
+                'name' => 'required',
+            ]);
+        }
+        else{
+            $request->validate([
+                'name' => 'required',
+                'username' => 'required|unique:users',
+            ]);
+        }
+
+        $user               = User::findOrFail(\Auth::user()->id);
+        $user->name         = $request->name;
+        $user->username     = $request->username;
+        $user->phone_number = $request->phone_number;
+
+        if($user->save())
+        {
+            $alert = [
+                "type" => "alert-success",
+                "msg"  => "Profil berhasil diubah!"
+            ];
+            return back()->with($alert);
+        }
+        $alert = [
+            "type" => "alert-success",
+            "msg"  => "Profil gagal diubah!"
+        ];
+        return back()->with($alert);
+    }
+    public function profileChangePassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+            'password_baru' => 'required|confirmed',
+        ]);
+
+        $user           = User::findOrFail(\Auth::user()->id);
+        if(!Hash::check($request->password, $user->password)){
+            return back()->withErrors(['password' => 'The password you entered does not match.']);
+        }
+        $user->password = Hash::make($request->password_baru);
+        
+        if($user->save())
+        {
+            $alert = [
+                "type" => "alert-success",
+                "msg"  => "Password berhasil diubah!"
+            ];
+            return back()->with($alert);
+        }
+        $alert = [
+            "type" => "alert-danger",
+            "msg"  => "Password gagal diubah!"
+        ];
+        return back()->with($alert);
     }
 }

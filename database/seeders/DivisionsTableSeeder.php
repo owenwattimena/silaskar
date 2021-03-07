@@ -23,17 +23,23 @@ class DivisionsTableSeeder extends Seeder
             ["name" => "Wakil Ketua"],
             ["name" => "Hakim"],
 
-            ["name" => "Panitra Pidana"],
-            ["name" => "Panitra Perdata"],
-            ["name" => "Panitra Tipikor"],
-            ["name" => "Panitra Perikanan"],
-            ["name" => "Panitra PHI"],
-            ["name" => "Panitra PP"],
-            ["name" => "Panitra JS/JSP"],
+            ["name" => "Panitera"],
+            ["name" => "Sekertaris"],
+            ["name" => "Js/Jsp"],
 
-            ["name" => "Kesek-Kasubag Umkeu"],
-            ["name" => "Kesek-Kasubag PTIP"],
-            ["name" => "Kesek-Kepeg Ortala"]
+            ["name" => "Panitera Pengganti"],
+
+            ["name" => "Kasubag Umkeu"],
+            ["name" => "Kasubag PTIP"],
+            ["name" => "Kasubag Ortala"],
+
+            ["name" => "Panitera Perdata"],
+            ["name" => "Panitera Tipikor"],
+            ["name" => "Panitera Hukum"],
+            ["name" => "Panitera Pidana"],
+            ["name" => "Panitera PHI"],
+            ["name" => "Panitera Perikanan"]
+
         ];
         foreach ($divisions as $division) {
             \App\Models\Division::create($division);

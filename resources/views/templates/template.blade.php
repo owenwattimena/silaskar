@@ -45,11 +45,13 @@ $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-user-circle"></i>
+                        {{-- <img width="32" src="https://ui-avatars.com/api/?name={{ \Auth::user()->name }}"
+                            class="img-circle elevation-2" alt="User Image"> --}}
                         <span class="">{{ Auth::user()->name }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="{{ route('profile') }}" class="dropdown-item">
                             <i class="fas fa-user-alt mr-2"></i> Profil
                         </a>
                         <div class="dropdown-divider"></div>
@@ -66,10 +68,10 @@ $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">SILASKAR</span>
+            <a href="{{ url('/') }}" class="brand-link bg-white">
+                <img src="{{ asset('images/LOGO-PN-AMBON.png') }}" alt="PNA LOGO"
+                    class="brand-image ml-5 img-circle elevation-3" style="opacity: 1">
+                <span class="brand-text font-weight-bold">SILASKAR</span>
             </a>
 
             <!-- Sidebar -->
@@ -77,11 +79,12 @@ $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                            alt="User Image">
+                        <img src="https://ui-avatars.com/api/?background=c92434&color=fff&name={{ \Auth::user()->name }}"
+                            class="img-circle elevation-2" alt="User Image">
                     </div>
-                    <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->division->name }}</a>
+                    <div class="info text-light">
+                        <p class="mb-0">{{ Auth::user()->name }}</p>
+                        <span class="badge badge-success d-block">{{ Auth::user()->division->name }}</span>
                     </div>
                 </div>
 
@@ -131,16 +134,17 @@ $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
                                     class="nav-link {{ request()->is('incoming-product') || request()->is('incoming-product/create') || request()->is('incoming-product/*/edit') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-arrow-down"></i>
                                     <p>
-                                        Barang Masuk
+                                        Pengadaan Barang
                                     </p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('product-came-out') }}"
                                     class="nav-link {{ request()->is('product-came-out') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-exchange-alt fa-rotate-90"></i>
+                                    <i class="nav-icon fas fa-arrow-up"></i>
+                                    {{-- <i class="nav-icon fas fa-exchange-alt fa-rotate-90"></i> --}}
                                     <p>
-                                        Pengadaan Barang
+                                        Permintaan Barang
                                         @if (count($requestProducts) > 0)
                                             <span
                                                 class="right badge badge-warning">{{ count($requestProducts) }}</span>
@@ -160,15 +164,24 @@ $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
                                 </a>
                             </li>
                         @endif
-                        <li class="nav-header"></li>
                         @if (\Auth::user()->division_id == 1 || \Auth::user()->division_id == 2)
+                            <li class="nav-header">LAPORAN</li>
 
                             <li class="nav-item">
-                                <a href="{{ route('report') }}"
-                                    class="nav-link {{ request()->is('report') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-file"></i>
+                                <a href="{{ route('report-in') }}"
+                                    class="nav-link {{ request()->is('report-in') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-file-pdf"></i>
                                     <p>
-                                        Laporan
+                                        Laporan Pengadaan
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('report-out') }}"
+                                    class="nav-link {{ request()->is('report-out') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-file-pdf"></i>
+                                    <p>
+                                        Laporan Permintaan
                                     </p>
                                 </a>
                             </li>

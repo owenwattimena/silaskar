@@ -77,14 +77,14 @@
                                                          <select id="unit" name="unit" class="form-control select2"
                                                              style="width: 100%;" required>
                                                              <option value="">Pilih Barang</option>
-                                                             <option value="Buah">Buah</option>
-                                                             <option value="Buku">Buku</option>
-                                                             <option value="Botol">Botol</option>
-                                                             <option value="Dos">Dos</option>
-                                                             <option value="Lembar">Lembar</option>
-                                                             <option value="Lusin">Lusin</option>
-                                                             <option value="Pak">Pak</option>
-                                                             <option value="Rim">Rim</option>
+                                                             <option value="BUAH">BUAH</option>
+                                                             <option value="BUKU">BUKU</option>
+                                                             <option value="BOTOL">BOTOL</option>
+                                                             <option value="DOS">DOS</option>
+                                                             <option value="LEMBAR">LEMBAR</option>
+                                                             <option value="LUSIN">LUSIN</option>
+                                                             <option value="PAK">PAK</option>
+                                                             <option value="RIM">RIM</option>
                                                          </select>
                                                          <!-- /.form-group -->
                                                          @error('unit')
@@ -188,14 +188,14 @@
                                      <label for="edit_unit">Satuan</label>
                                      <select id="edit_unit" name="edit_unit" class="form-control select2"
                                          style="width: 100%;">
-                                         <option value="Buah">Buah</option>
-                                         <option value="Buku">Buku</option>
-                                         <option value="Botol">Botol</option>
-                                         <option value="Dos">Dos</option>
-                                         <option value="Lembar">Lembar</option>
-                                         <option value="Lusin">Lusin</option>
-                                         <option value="Pak">Pak</option>
-                                         <option value="Rim">Rim</option>
+                                         <option value="BUAH">BUAH</option>
+                                         <option value="BUKU">BUKU</option>
+                                         <option value="BOTOL">BOTOL</option>
+                                         <option value="DOS">DOS</option>
+                                         <option value="LEMBAR">LEMBAR</option>
+                                         <option value="LUSIN">LUSIN</option>
+                                         <option value="PAK">PAK</option>
+                                         <option value="RIM">RIM</option>
                                      </select>
                                      <!-- /.form-group -->
                                      @error('edit_unit')

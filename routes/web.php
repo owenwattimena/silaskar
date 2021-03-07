@@ -95,16 +95,27 @@ Route::group(['middleware' => ['auth', 'user_status']], function(){
     });
     
     Route::middleware(['admin'])->group(function () { 
-        Route::prefix('/report')->group(function () {
-            Route::get('/', [ReportController::class, 'index'])->name('report');
-            // Route::get('/search?start={start}&end={end}&status={status}', [ReportController::class, 'search'])->name('report.search');
-            Route::get('/search', [ReportController::class, 'search'])->name('report.search');
-            Route::post('/pdf', [ReportController::class, 'pdf'])->name('report.pdf');
-            Route::get('/pdf', function(){
-                $data['reports'] = ProductCameOut::with('product')->get();
-                
-                return view('report.pdf', $data);
-            });
+        Route::prefix('/report-in')->group(function () {
+            Route::get('/', [ReportController::class, 'in'])->name('report-in');
+            Route::get('/search', [ReportController::class, 'reportIn'])->name('report-in.search');
+            Route::post('/pdf', [ReportController::class, 'reportInPdf'])->name('report-in.pdf');
         });
+        Route::prefix('/report-out')->group(function () {
+            Route::get('/', [ReportController::class, 'out'])->name('report-out');
+            Route::get('/search', [ReportController::class, 'reportOut'])->name('report-out.search');
+            Route::post('/pdf', [ReportController::class, 'reportOutPdf'])->name('report-out.pdf');
+        });
+        
+        Route::get('/pdf', function(){
+            $data['reports'] = ProductCameOut::with('product')->get();
+            
+            return view('report.pdf', $data);
+        });
+    });
+    
+    Route::prefix('/profile')->group(function () {
+        Route::get('/', [UserController::class, 'profile'])->name('profile');
+        Route::put('/', [UserController::class, 'profilePut'])->name('profile.put');
+        Route::put('/change-password', [UserController::class, 'profileChangePassword'])->name('profile.change-password');
     });
 });

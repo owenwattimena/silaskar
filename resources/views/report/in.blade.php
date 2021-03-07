@@ -19,7 +19,7 @@
 
 
 @endsection
-@section('page', 'Laporan')
+@section('page', 'Laporan Pengadaan')
 
 @section('content')
     <div class="row">
@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-header">Cari laporan berdasarkan rentang waktu</div>
                 <div class="card-header">
-                    <form action="{{ route('report.pdf') }}" method="post">
+                    <form action="{{ route('report-in.pdf') }}" method="post">
                         <div class="row">
                             @csrf
                             <div class="form-group col-md-4">
@@ -40,19 +40,6 @@
                                         </span>
                                     </div>
                                     <input type="text" name="date_range" class="form-control float-right" id="date_range">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="status">Status</label>
-
-                                <div class="input-group">
-                                    <select name="status" id="status" class="form-control">
-                                        <option selected value="Proses">Proses</option>
-                                        <option value="Disetujui">Disetujui</option>
-                                        <option value="Ditolak">Ditolak</option>
-                                        <option value="semua">Semua</option>
-                                    </select>
                                 </div>
                                 <!-- /.input group -->
                             </div>
@@ -199,18 +186,16 @@
 
             $(document).ready(function() {
                 $('.btn-search').on('click', function() {
-                    var status = $('#status').val();
                     console.log(startDate);
                     console.log(endDate);
-                    console.log(status);
                     // data_table.ajax.url(
                     //     `{{ url('/report/search?start=') }}2021-03-06&end=2021-03-06&status=semua`
                     //     ).load();
                     // data_table.ajax.reload();
                     $("body").LoadingOverlay("show");
 
-                    if (data_table.ajax.url("{{ url('/report/search?start=') }}" + startDate +
-                            "&end=" + endDate + "&status=" + status).load()) {
+                    if (data_table.ajax.url("{{ url('/report-in/search?start=') }}" + startDate +
+                            "&end=" + endDate).load()) {
                         $("body").LoadingOverlay("hide", true);
                     } else {
                         $("body").LoadingOverlay("hide", true);
