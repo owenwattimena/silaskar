@@ -84,15 +84,17 @@
                     Belum ada pencarian
                 </div>
                 <div class="card-body">
-                    <table id="table" class="table table-sm table-bordered table-striped">
-                        <thead>
-                            <th>TANGGAL</th>
-                            <th>NAMA BARANG</th>
-                            <th>KUANTITAS</th>
-                            <th>HARGA SATUAN (Rp)</th>
-                            <th>JUMLAH</th>
-                        </thead>
-                    </table>
+                    <div class="table-responsive">
+                        <table id="table" class="table table-sm table-bordered table-striped">
+                            <thead>
+                                <th>TANGGAL</th>
+                                <th>NAMA BARANG</th>
+                                <th>KUANTITAS</th>
+                                <th>HARGA SATUAN (Rp)</th>
+                                <th>JUMLAH</th>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,7 +147,7 @@
 
 
             let data_table = $("#table").DataTable({
-                "responsive": true,
+                "responsive": false,
                 "searching": false,
 
                 // "ajax": `{{ url('/report/search?start=') }}2021-03-06&end=2021-03-06&status=semua`,

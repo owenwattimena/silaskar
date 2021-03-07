@@ -113,7 +113,7 @@
                                                         </p>
                                                         <div class="col-md-12 text-left">
                                                             <button type="submit"
-                                                                class="btn btn-success rounded-0 px-5">SIMPAN</button>
+                                                                class="btn btn-success btn-block rounded-0 px-5">SIMPAN</button>
                                                         </div>
                                                         <!-- /.col -->
                                                     </div>
@@ -126,33 +126,35 @@
                             </div>
                         </div>
                     @endif
-                    <table id="example1" class="table table-sm table-bordered table-striped ">
-                        <thead>
-                            <tr>
-                                <th>Hari,Tanggal</th>
-                                <th>Nama Barang</th>
-                                <th>Kuantitas</th>
-                                <th>Harga Satuan</th>
-                                <th>Jumlah</th>
-                                <th>
-                                    Aksi
-                                </th>
-                            </tr>
-                        </thead>
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-sm table-bordered table-striped ">
+                            <thead>
+                                <tr>
+                                    <th>Hari,Tanggal</th>
+                                    <th>Nama Barang</th>
+                                    <th>Kuantitas</th>
+                                    <th>Harga Satuan</th>
+                                    <th>Jumlah</th>
+                                    <th>
+                                        Aksi
+                                    </th>
+                                </tr>
+                            </thead>
 
-                        <tfoot>
-                            <tr>
-                                <th>Hari,Tanggal</th>
-                                <th>Nama Barang</th>
-                                <th>Kuantitas</th>
-                                <th>Harga Satuan</th>
-                                <th>Jumlah</th>
-                                <th>
-                                    Aksi
-                                </th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                            <tfoot>
+                                <tr>
+                                    <th>Hari,Tanggal</th>
+                                    <th>Nama Barang</th>
+                                    <th>Kuantitas</th>
+                                    <th>Harga Satuan</th>
+                                    <th>Jumlah</th>
+                                    <th>
+                                        Aksi
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -260,7 +262,7 @@
         // DATA TABEL INITIAL
         function initDataTable() {
             let data_table = $("#example1").DataTable({
-                "responsive": true,
+                "responsive": false,
                 "autoWidth": false,
                 "ajax": `{{ route('incoming-product.all') }}`,
                 "columns": [{

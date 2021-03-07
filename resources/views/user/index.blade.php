@@ -39,70 +39,74 @@
                                 TAMBAH</a>
                         </div>
                     </div>
-                    <table id="example1" class="table table-bordered table-striped table-sm ">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama </th>
-                                <th>Username</th>
-                                <th>Bagian</th>
-                                <th>Nomor Telepon</th>
-                                <th>
-                                    Aksi
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $no = 0;
-                            @endphp
-                            @foreach ($users as $user)
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-striped table-sm ">
+                            <thead>
                                 <tr>
-                                    <td>{{ ++$no }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->username }}</td>
-                                    <td>{{ $user->division->name }}</td>
-                                    <td>{{ $user->phone_number ?? '-' }}</td>
-                                    <td>
-                                        <a href="{{ route('user.edit', $user->id) }}"
-                                            class="btn btn-warning btn-sm rounded-0"><i class="fas fa-user-cog"></i> UBAH
-                                        </a>
-
-                                        <form action="{{ route('user.access', $user->id) }}" method="POST"
-                                            class="form d-inline">
-                                            @csrf
-                                            @method('put')
-                                            <button type="submit"
-                                                class="btn btn-sm btn-{{ $user->status == 'active' ? 'dark' : 'success' }} rounded-0"
-                                                data-toggle="tooltip" data-placement="top"
-                                                title="{{ $user->status == 'active' ? 'Nonaktifkan' : 'Aktifkan' }}">
-                                                <i class="fas fa-power-off"></i>
-                                                {{ $user->status == 'active' ? 'Nonaktifkan' : 'Aktifkan' }}</button>
-                                        </form>
-
-                                        <form action="{{ route('user.delete', $user->id) }}" method="POST"
-                                            class="form d-inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" onclick="custom_confirm(event, '{{ $user->name }}')"
-                                                class="btn btn-sm btn-danger rounded-0"> <i class="fas fa-trash"></i>
-                                                HAPUS</button>
-                                        </form>
-                                    </td>
+                                    <th>No</th>
+                                    <th>Nama </th>
+                                    <th>Username</th>
+                                    <th>Bagian</th>
+                                    <th>Nomor Telepon</th>
+                                    <th>
+                                        Aksi
+                                    </th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Barang</th>
-                                <th>Stok</th>
-                                <th>Satuan</th>
-                                <th>Harga Satuan</th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $no = 0;
+                                @endphp
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ ++$no }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->username }}</td>
+                                        <td>{{ $user->division->name }}</td>
+                                        <td>{{ $user->phone_number ?? '-' }}</td>
+                                        <td>
+                                            <a href="{{ route('user.edit', $user->id) }}"
+                                                class="btn btn-warning btn-sm rounded-0"><i class="fas fa-user-cog"></i>
+                                                UBAH
+                                            </a>
+
+                                            <form action="{{ route('user.access', $user->id) }}" method="POST"
+                                                class="form d-inline">
+                                                @csrf
+                                                @method('put')
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-{{ $user->status == 'active' ? 'dark' : 'success' }} rounded-0"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="{{ $user->status == 'active' ? 'Nonaktifkan' : 'Aktifkan' }}">
+                                                    <i class="fas fa-power-off"></i>
+                                                    {{ $user->status == 'active' ? 'Nonaktifkan' : 'Aktifkan' }}</button>
+                                            </form>
+
+                                            <form action="{{ route('user.delete', $user->id) }}" method="POST"
+                                                class="form d-inline">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit"
+                                                    onclick="custom_confirm(event, '{{ $user->name }}')"
+                                                    class="btn btn-sm btn-danger rounded-0"> <i class="fas fa-trash"></i>
+                                                    HAPUS</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Barang</th>
+                                    <th>Stok</th>
+                                    <th>Satuan</th>
+                                    <th>Harga Satuan</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -124,7 +128,7 @@
     <script>
         $(document).ready(function() {
             $("#example1").DataTable({
-                "responsive": true,
+                "responsive": false,
                 "autoWidth": false,
             });
         });

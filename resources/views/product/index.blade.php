@@ -121,33 +121,36 @@
                              </div>
                          </div>
                      @endif
-                     <table id="example1" class="table table-bordered table-striped table-sm">
-                         <thead>
-                             <tr>
-                                 <th>No</th>
-                                 <th>Nama Barang</th>
-                                 <th>Stok</th>
-                                 <th>Satuan</th>
-                                 <th>Harga Satuan</th>
-                                 {{-- @if (\Auth::user()->division_id == 1 || \Auth::user()->division_id == 2) --}}
-                                 <th>
-                                     Aksi
-                                 </th>
-                                 {{-- @endif --}}
-                             </tr>
-                         </thead>
-                         {{-- Data generate by dataTable --}}
-                         <tfoot>
-                             <tr>
-                                 <th>No</th>
-                                 <th>Nama Barang</th>
-                                 <th>Stok</th>
-                                 <th>Satuan</th>
-                                 <th>Harga Satuan</th>
-                                 <th></th>
-                             </tr>
-                         </tfoot>
-                     </table>
+                     <div class="table-responsive">
+
+                         <table id="example1" class="table table-bordered table-striped table-sm">
+                             <thead>
+                                 <tr>
+                                     <th>No</th>
+                                     <th>Nama Barang</th>
+                                     <th>Stok</th>
+                                     <th>Satuan</th>
+                                     <th>Harga Satuan</th>
+                                     {{-- @if (\Auth::user()->division_id == 1 || \Auth::user()->division_id == 2) --}}
+                                     <th>
+                                         Aksi
+                                     </th>
+                                     {{-- @endif --}}
+                                 </tr>
+                             </thead>
+                             {{-- Data generate by dataTable --}}
+                             <tfoot>
+                                 <tr>
+                                     <th>No</th>
+                                     <th>Nama Barang</th>
+                                     <th>Stok</th>
+                                     <th>Satuan</th>
+                                     <th>Harga Satuan</th>
+                                     <th></th>
+                                 </tr>
+                             </tfoot>
+                         </table>
+                     </div>
                  </div>
                  <!-- /.card-body -->
              </div>
@@ -269,7 +272,7 @@
                      form.append('_token', '{{ csrf_token() }}');
                      form.append('_method', 'delete');
 
-                     let ajax = ajaxPost(`{{ url('/product') }}/${data.id}/delete`, form);
+                     let ajax = ajaxPost(`{{ url('/product') }}/` + data.id + `/delete`, form);
                      ajax.done(function(response) {
                          $("body").LoadingOverlay("hide", true);
                          if (response.meta.status == 'error') {
@@ -285,11 +288,11 @@
 
          function initDataTable() {
              let data_table = $("#example1").DataTable({
-                 "responsive": true,
+                 "responsive": false,
                  "autoWidth": false,
                  "ajax": `{{ route('product.all') }}`,
                  "columns": [{
-                     data: null,
+                     "data": null,
                  }, {
                      "data": 'name'
                  }, {

@@ -34,38 +34,39 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-sm table-bordered table-striped ">
+                            <thead>
+                                <tr>
+                                    <th>Hari,Tanggal</th>
+                                    <th>Nama Barang</th>
+                                    <th>Kuantitas</th>
+                                    <th>Divisi/Bagian</th>
+                                    <th>User</th>
+                                    <th>Keterangan</th>
+                                    <th>Status</th>
+                                    <th>
+                                        Aksi
+                                    </th>
+                                </tr>
+                            </thead>
 
-                    <table id="example1" class="table table-sm table-bordered table-striped ">
-                        <thead>
-                            <tr>
-                                <th>Hari,Tanggal</th>
-                                <th>Nama Barang</th>
-                                <th>Kuantitas</th>
-                                <th>Divisi/Bagian</th>
-                                <th>User</th>
-                                <th>Keterangan</th>
-                                <th>Status</th>
-                                <th>
-                                    Aksi
-                                </th>
-                            </tr>
-                        </thead>
-
-                        <tfoot>
-                            <tr>
-                                <th>Hari,Tanggal</th>
-                                <th>Nama Barang</th>
-                                <th>Kuantitas</th>
-                                <th>Divisi/Bagian</th>
-                                <th>User</th>
-                                <th>Keterangan</th>
-                                <th>Status</th>
-                                <th>
-                                    Aksi
-                                </th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                            <tfoot>
+                                <tr>
+                                    <th>Hari,Tanggal</th>
+                                    <th>Nama Barang</th>
+                                    <th>Kuantitas</th>
+                                    <th>Divisi/Bagian</th>
+                                    <th>User</th>
+                                    <th>Keterangan</th>
+                                    <th>Status</th>
+                                    <th>
+                                        Aksi
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -140,10 +141,11 @@
         // DATA TABEL INITIAL
         function initDataTable() {
             let data_table = $("#example1").DataTable({
-                "responsive": {
-                    "details": true,
-                    "type": 'column'
-                },
+                "responsive": false,
+                // "responsive": {
+                //     "details": true,
+                //     "type": 'column'
+                // },
                 "autoWidth": false,
                 "ajax": `{{ route('product-came-out.all') }}`,
                 "columns": [{
