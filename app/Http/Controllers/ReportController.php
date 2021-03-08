@@ -79,7 +79,7 @@ class ReportController extends Controller
         $data['reports'] = IncomingProduct::whereBetween('created_at',[$start_datetime, $end_datetime])->with('product')->get();
         PDF::setOptions(['dpi' => 300, 'defaultFont' => 'sans-serif', 'isHtml5ParserEnabled' => true]);
         $data['category'] = "PENGADAAN";
-        $pdf = PDF::loadView('LAPORAN-PENGADAAN.pdf', $data);
+        $pdf = PDF::loadView('report.pdf', $data);
         return $pdf->stream('LAPORAN-PENGADAAN.pdf');
     }
     public function reportOutPdf(Request $request)
@@ -120,7 +120,7 @@ class ReportController extends Controller
         }
         PDF::setOptions(['dpi' => 300, 'defaultFont' => 'sans-serif', 'isHtml5ParserEnabled' => true]);
         $data['category'] = "PERMINTAAN";
-        $pdf = PDF::loadView('LAPORAN-PERMINTAAN.pdf', $data);
+        $pdf = PDF::loadView('report.pdf', $data);
         return $pdf->stream('LAPORAN-PERMINTAAN.pdf');
     }
 }
