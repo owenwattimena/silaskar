@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="icon" type="image/png" href="{{ asset('images/LOGO-PN-AMBON.png') }}" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SILASKAR | Log in</title>
