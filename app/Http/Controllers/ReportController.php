@@ -80,7 +80,7 @@ class ReportController extends Controller
         PDF::setOptions(['dpi' => 300, 'defaultFont' => 'sans-serif', 'isHtml5ParserEnabled' => true]);
         $data['category'] = "PENGADAAN";
         $pdf = PDF::loadView('report.pdf', $data);
-        return $pdf->stream('LAPORAN-PENGADAAN.pdf');
+        return $pdf->stream('report.pdf');
     }
     public function reportOutPdf(Request $request)
     {
@@ -121,6 +121,6 @@ class ReportController extends Controller
         PDF::setOptions(['dpi' => 300, 'defaultFont' => 'sans-serif', 'isHtml5ParserEnabled' => true]);
         $data['category'] = "PERMINTAAN";
         $pdf = PDF::loadView('report.pdf', $data);
-        return $pdf->stream('LAPORAN-PERMINTAAN.pdf');
+        return $pdf->stream('report.pdf');
     }
 }
