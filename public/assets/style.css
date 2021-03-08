@@ -5,3 +5,7 @@
 .my-bg-warning {
     background-color: #fff496!important;
 }
+
+html body .content-wraper {
+    background-image: url("http://silaskar.dev.com/images/LOGO-PN-AMBON.png")!important;
+}

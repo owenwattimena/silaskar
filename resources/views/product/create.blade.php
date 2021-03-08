@@ -1,9 +1,5 @@
 @extends('templates.template')
 
-@section('title', 'ADMINISTRATOR')
-
-
-
 @section('page', 'Tambah Barang')
 
 @section('content')

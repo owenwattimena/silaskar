@@ -1,6 +1,5 @@
 @extends('templates.template')
 
-@section('title', 'ADMINISTRATOR')
 
 @section('style')
     <!-- DataTables -->
@@ -17,7 +16,7 @@
 
 
 @endsection
-@section('page', 'Transaksi Barang Masuk')
+@section('page', 'Transaksi Pengadaan Barang')
 
 @section('content')
     <div class="row">
@@ -34,7 +33,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Data Transaksi Barang</h3>
+                    <h3 class="card-title">Data Transaksi Pengadaan Barang</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -168,7 +167,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editIncomingProductLabel">Ubah Barang</h5>
+                        <h5 class="modal-title" id="editIncomingProductLabel">Ubah Transaksi</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

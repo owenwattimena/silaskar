@@ -1,7 +1,5 @@
 @extends('templates.template')
 
-@section('title', 'ADMINISTRATOR')
-
 @section('style')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -11,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}">
 @endsection
 
-@section('page', 'Barang')
+@section('page', 'User')
 
 @section('content')
     <div class="row">
@@ -28,7 +26,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Data Master Barang Masuk</h3>
+                    <h3 class="card-title">Data Master User</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

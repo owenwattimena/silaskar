@@ -1,16 +1,15 @@
 @extends('templates.template')
 
-@section('title', 'ADMINISTRATOR')
 @section('page', 'Dashboard')
 
 @section('content')
     <div class="row">
         <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box">
-                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-th"></i></span>
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-check"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Total Permintaan Diterima</span>
-                    <span class="info-box-number">0</span>
+                    <span class="info-box-number">{{ count($requestAccepted) }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -19,11 +18,11 @@
         <!-- /.col -->
         <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3">
-                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user-circle"></i></span>
+                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-ban"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Total Permintaan Ditolak</span>
-                    <span class="info-box-number">0</span>
+                    <span class="info-box-number">{{ count($requestRejected) }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>

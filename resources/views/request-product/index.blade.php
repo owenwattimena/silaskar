@@ -1,7 +1,5 @@
 @extends('templates.template')
 
-@section('title', 'ADMINISTRATOR')
-
 @section('style')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -140,38 +138,41 @@
                             </div>
                         </div>
                     @endif
-                    <table id="example1" class="table table-sm table-bordered table-striped ">
-                        <thead>
-                            <tr>
-                                <th>Hari,Tanggal</th>
-                                <th>Nama Barang</th>
-                                <th>Kuantitas</th>
-                                {{-- <th>Bagian/Divisi</th> --}}
-                                <th>User</th>
-                                <th>Status</th>
-                                <th>Keterangan</th>
-                                {{-- <th>
-                                    Aksi
-                                </th> --}}
-                            </tr>
-                        </thead>
+                    <div class="table-responsive">
 
-                        <tfoot>
-                            <tr>
-                                <th>Hari,Tanggal</th>
-                                <th>Nama Barang</th>
-                                <th>Kuantitas</th>
-                                {{-- <th>Harga Satuan</th> --}}
-                                {{-- <th>Bagian/Divisi</th> --}}
-                                <th>User</th>
-                                <th>Status</th>
-                                <th>Keterangan</th>
-                                {{-- <th>
+                        <table id="example1" class="table table-sm table-bordered table-striped ">
+                            <thead>
+                                <tr>
+                                    <th>Hari,Tanggal</th>
+                                    <th>Nama Barang</th>
+                                    <th>Kuantitas</th>
+                                    {{-- <th>Bagian/Divisi</th> --}}
+                                    <th>User</th>
+                                    <th>Status</th>
+                                    <th>Keterangan</th>
+                                    {{-- <th>
                                     Aksi
                                 </th> --}}
-                            </tr>
-                        </tfoot>
-                    </table>
+                                </tr>
+                            </thead>
+
+                            <tfoot>
+                                <tr>
+                                    <th>Hari,Tanggal</th>
+                                    <th>Nama Barang</th>
+                                    <th>Kuantitas</th>
+                                    {{-- <th>Harga Satuan</th> --}}
+                                    {{-- <th>Bagian/Divisi</th> --}}
+                                    <th>User</th>
+                                    <th>Status</th>
+                                    <th>Keterangan</th>
+                                    {{-- <th>
+                                    Aksi
+                                </th> --}}
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -279,7 +280,7 @@
         // DATA TABEL INITIAL
         function initDataTable() {
             let data_table = $("#example1").DataTable({
-                "responsive": true,
+                "responsive": false,
                 "autoWidth": false,
                 "ajax": `{{ route('request-product.all') }}`,
                 "columns": [{

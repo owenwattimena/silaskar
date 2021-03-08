@@ -1,6 +1,7 @@
 @php
 $emptyProducts = \App\Models\Product::where('stock', 0)->get();
 $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
+$division = \App\Models\Division::findOrFail(\Auth::user()->division_id);
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@ $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>SILASKAR | @yield('title')</title>
+    <title>SILASKAR | {{ $division->name }}</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
@@ -23,9 +24,19 @@ $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    {{-- <link href="https://semantic-ui.com/dist/semantic.min.css" rel="stylesheet" /> --}}
 
     @yield('style')
+    <style>
+        html body .content-wrapper {
+            background-image: url("http://silaskar.dev.com/images/LOGO-PN-AMBON-45.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            /* opacity: .3; */
+        }
 
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -232,10 +243,10 @@ $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-            All rights reserved.
+            <strong>Copyright &copy; 2021 <a href="https://pn-ambon.go.id/" target="_blank">Pengadilan Negeri
+                    Ambon</a>.</strong>
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.0.5
+                <b>Version</b> 1.0.0
             </div>
         </footer>
     </div>

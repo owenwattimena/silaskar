@@ -1,7 +1,5 @@
  @extends('templates.template')
 
- @section('title', 'ADMINISTRATOR')
-
  @section('style')
 
      <!-- DataTables -->
@@ -15,6 +13,19 @@
      <!-- Select2 -->
      <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
      <link rel="stylesheet" href="{{ asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
+     <style>
+         .my-badge-warning {
+             background-color: #fff496 !important;
+             color: #fff496 !important;
+         }
+
+         .my-badge-danger {
+             background-color: #ffc1c1 !important;
+             color: #ffc1c1 !important;
+         }
+
+     </style>
  @endsection
 
  @section('page', 'Barang')
@@ -38,6 +49,18 @@
                  </div>
                  <!-- /.card-header -->
                  <div class="card-body">
+                     <div>
+                         <p class="mb-0">Keterangan:</p>
+                         <div class="">
+                             <span class="badge my-badge-warning">1</span>
+                             <span>Stok <= 10 </span>
+                         </div>
+
+                         <div class="mt-1">
+                             <span class="badge badge-danger my-badge-danger">1</span>
+                             <span>Stok <= 5 </span>
+                         </div>
+                     </div>
                      @if (\Auth::user()->division_id == 1 || \Auth::user()->division_id == 2)
                          <div class="row mb-3">
                              <div class="col-12 text-right">

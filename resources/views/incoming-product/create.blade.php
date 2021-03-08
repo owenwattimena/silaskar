@@ -1,6 +1,5 @@
 @extends('templates.template')
 
-@section('title', 'ADMINISTRATOR')
 
 @section('style')
     <!-- Select2 -->

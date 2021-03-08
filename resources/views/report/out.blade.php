@@ -1,7 +1,5 @@
 @extends('templates.template')
 
-@section('title', 'ADMINISTRATOR')
-
 @section('style')
     <!-- daterange picker -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/daterangepicker/daterangepicker.css') }}">

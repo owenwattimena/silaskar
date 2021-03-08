@@ -1,6 +1,5 @@
 @extends('templates.template')
 
-@section('title', 'ADMINISTRATOR')
 @section('page', 'Dashboard')
 
 @section('content')

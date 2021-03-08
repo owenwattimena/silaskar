@@ -1,7 +1,5 @@
 @extends('templates.template')
 
-@section('title', 'ADMINISTRATOR')
-
 @section('style')
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
