@@ -20,13 +20,23 @@
             font-size: 12px !important;
         }
 
+        .logo {
+            width: 80px;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+
+        hr {
+            border-top: 3px solid black;
+        }
+
         h1 {
             font-weight: bold;
         }
 
-        table,
-        th,
-        td {
+        #table,
+        #table th,
+        #table td {
             border: 1px solid black !important;
         }
 
@@ -45,10 +55,27 @@
 </head>
 
 <body class="py-5">
-    <h1 class="text-center">REKAP PERMINTAAN ATK</h1>
+    <header class="text-center">
+        <table class="mx-auto" style="border:none">
+            <tr>
+                <td>
+                    <img class="logo" src="{{ asset('images/LOGO-PN-AMBON.png') }}" alt="LOGO PN Ambon">
+                </td>
+                <td>
+                    <h1 class="text-center">PENGADILAN NEGERI AMBON</h1>
+                    <h3 class="text-center">Jl. Sultan Hairun No. 1 Ambon</h3>
+                    <h3 class="text-center">Telp : (0911)-352462 Fax (0911)-355477</h3>
+                    <h3 class="text-center">AMBON - 97126</h3>
+                </td>
+            </tr>
+        </table>
+    </header>
+    <hr>
+
+    <h1 class="text-center">REKAP {{ $category }} ATK</h1>
     <h1 class="text-center">{{ $start }} S/D {{ $end }} </h1>
 
-    <table class="mt-5 table-sm mb-5" width="100%">
+    <table id="table" class="mt-5 table-sm mb-5" width="100%">
         <thead>
             <tr class="text-center">
                 <th scope="col">NO</th>
