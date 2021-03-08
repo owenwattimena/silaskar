@@ -30,11 +30,10 @@ $division = \App\Models\Division::findOrFail(\Auth::user()->division_id);
     @yield('style')
     <style>
         html body .content-wrapper {
-            background-image: url("http://silaskar.dev.com/images/LOGO-PN-AMBON-45.png");
+            background-image: url("{{ asset('assets/images/LOGO-PN-AMBON-45.png') }}");
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            /* opacity: .3; */
         }
 
     </style>
