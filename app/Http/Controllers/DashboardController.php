@@ -16,34 +16,37 @@ class DashboardController extends Controller
         {
             switch (\Auth::user()->division_id) {
                 case 1:
-                    $data['users'] = User::where([
-                        ['division_id' , '!=', 1]
-                    ])->with('division')->orderBy('id', 'asc')->get();
+                    // $data['users'] = User::where([
+                    //     ['division_id' , '!=', 1]
+                    // ])->get();
+                    $user = [
+                        ['division_id' , '!=' ,1]
+                    ];
                     break;
                 case 2:
-                    $data['users'] = User::where([
-                        ['division_id' , '!=', 1],
-                        ['division_id' , '!=', 2]
-                    ])->with('division')->orderBy('id', 'asc')->get();
+                        $user = [
+                            ['division_id' , '!=' ,1],
+                            ['division_id' , '!=' ,2],
+                        ];
                     break;
             }
-            
+                
+            $data['users'] = User::where($user)->get();
             $data['products'] = Product::all();
             return view('dashboard.index', $data);
         }
         else{
-
-            // $data['requestAccepted'] = ProductCameOut::where([
-            //     ['status' , '==' , 'disetujui'],
-            //     ['user_id' , '==' , \Auth::user()->id]
-            // ])->get();
-            // $data['requestRejected'] = ProductCameOut::where([
-            //     ['status' , '==' , 'Ditolak'],
-            //     ['user_id' , '==' , \Auth::user()->id]
-            // ])->get();
-            $data['requestAccepted'] = ProductCameOut::where('status', 'Disetujui')->where('user_id', \Auth::user()->id)->get();
-            $data['requestRejected'] = ProductCameOut::where('status', 'Ditolak')->where('user_id', \Auth::user()->id)->get();
-            // dd($data);
+            $requestAccepted = [
+                ['status' , '=', 'Disetujui'],
+                ['user_id' , '=', \Auth::user()->id]
+            ];
+            $data['requestAccepted'] = ProductCameOut::where($requestAccepted)->get();
+            $data['requestRejected'] = ProductCameOut::where(
+                [
+                    ['status' , '=', 'Ditolak'],
+                    ['user_id' , '=', \Auth::user()->id]
+                ]
+            )->get();
             return view('dashboard.index-division', $data);
         }
     }
