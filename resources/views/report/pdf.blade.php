@@ -59,7 +59,7 @@
         <table class="mx-auto" style="border:none">
             <tr>
                 <td>
-                    <img class="logo" src="{{ asset('images/LOGO-PN-AMBON.png') }}" alt="LOGO PN Ambon">
+                    <img class="logo" src="{{ asset('images/LOGO-PN-AMBON.jpg') }}" alt="LOGO PN Ambon">
                 </td>
                 <td>
                     <h1 class="text-center">PENGADILAN NEGERI AMBON</h1>
