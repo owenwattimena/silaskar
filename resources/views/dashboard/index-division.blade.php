@@ -9,7 +9,7 @@
                 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-check"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Total Permintaan Diterima</span>
-                    <span class="info-box-number">{{ count($requestAccepted) }}</span>
+                    <span class="info-box-number">{{ count($requestAccepted) ?? 0 }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -22,7 +22,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Total Permintaan Ditolak</span>
-                    <span class="info-box-number">{{ count($requestRejected) }}</span>
+                    <span class="info-box-number">{{ count($requestRejected) ?? 0 }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
