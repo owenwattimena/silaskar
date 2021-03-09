@@ -16,9 +16,6 @@ class DashboardController extends Controller
         {
             switch (\Auth::user()->division_id) {
                 case 1:
-                    // $data['users'] = User::where([
-                    //     ['division_id' , '!=', 1]
-                    // ])->get();
                     $user = [
                         ['division_id' , '!=' ,1]
                     ];
@@ -31,8 +28,8 @@ class DashboardController extends Controller
                     break;
             }
                 
-            $data['users'] = User::where($user)->get();
-            $data['products'] = Product::all();
+            $data['users'] = User::where($user)->get()->count();
+            $data['products'] = Product::all()->count();
             return view('dashboard.index', $data);
         }
         else{

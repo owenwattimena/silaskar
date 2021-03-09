@@ -1,7 +1,6 @@
 @php
-$emptyProducts = \App\Models\Product::where('stock', 0)->get();
+$emptyProducts = \App\Models\Product::where('stock', '<=', 5)->get();
 $requestProducts = \App\Models\ProductCameOut::where('status', 'Proses')->get();
-$division = \App\Models\Division::findOrFail(\Auth::user()->division_id);
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +13,7 @@ $division = \App\Models\Division::findOrFail(\Auth::user()->division_id);
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>SILASKAR | {{ $division->name }}</title>
+    <title>SILASKAR | {{ \Auth::user()->division->name }}</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
@@ -95,7 +94,7 @@ $division = \App\Models\Division::findOrFail(\Auth::user()->division_id);
                     </div>
                     <div class="info text-light">
                         <p class="mb-0">{{ Auth::user()->name }}</p>
-                        <span class="badge badge-success d-block">{{ Auth::user()->division->name }}</span>
+                        <span class="badge badge-success d-block">{{ \Auth::user()->division->name }}</span>
                     </div>
                 </div>
 

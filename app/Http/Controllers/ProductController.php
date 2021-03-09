@@ -10,8 +10,7 @@ class ProductController extends Controller
 {
     //
     public function index(){
-        $data['products'] = Product::orderBy('id', 'desc')->get();
-        return view('product.index',$data);
+        return view('product.index');
     }
     
     public function getProducts(){

@@ -10,7 +10,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Total Barang</span>
-                    <span class="info-box-number">{{ count($products) }}</span>
+                    <span class="info-box-number">{{ $products }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -23,7 +23,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Total User</span>
-                    <span class="info-box-number">{{ count($users) }}</span>
+                    <span class="info-box-number">{{ $users }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
