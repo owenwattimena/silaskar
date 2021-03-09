@@ -80,7 +80,8 @@
                                                                 class="form-control select2" required>
                                                                 <option value="">Pilih Barang</option>
                                                                 @foreach ($products as $product)
-                                                                    <option value="{{ $product->id }}">
+                                                                    <option data-stock="{{ $product->stock }}"
+                                                                        value="{{ $product->id }}">
                                                                         {{ $product->name }} |
                                                                         {{ $product->unit }}</option>
                                                                 @endforeach
@@ -92,20 +93,31 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-
-                                                        <div class="col-md-12 form-group">
+                                                        <div class="col-md-12 mb-2">
                                                             <label for="stock">Kuantitas <sup class="text-danger">*</sup>
                                                             </label>
 
-                                                            <input type="number" id="stock" name="stock"
-                                                                value="{{ old('stock') }}" class="form-control"
-                                                                autocomplete="off" required>
+                                                            <div class="input-group">
+                                                                <input type="number" min="1" id="stock" name="stock"
+                                                                    value="{{ old('stock') }}" class="form-control"
+                                                                    autocomplete="off" required>
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"
+                                                                        id="stok-label">UNIT</span>
+                                                                </div>
+                                                            </div>
                                                             @error('stock')
                                                                 <span>
                                                                     <small class="text-danger">{{ $message }}</small>
                                                                 </span>
                                                             @enderror
                                                         </div>
+                                                        <div class="col-md-12 form-group">
+                                                            <label for="current-stock">Stok</label>
+                                                            <input type="number" id="current-stock" name="current-stock"
+                                                                value="0" class="form-control" readonly>
+                                                        </div>
+
                                                         <p>
                                                             <sup class="text-danger">*</sup> <small>Data wajib
                                                                 diisi.</small>
@@ -263,6 +275,9 @@
             let data_table = $("#example1").DataTable({
                 "responsive": false,
                 "autoWidth": false,
+                "order": [
+                    [0, "desc"]
+                ],
                 "ajax": `{{ route('incoming-product.all') }}`,
                 "columns": [{
                     data: 'created_at',
@@ -426,6 +441,32 @@
             $('.select2').select2({
                 theme: 'bootstrap4',
                 placeholder: 'Pilih Barang',
+            });
+
+            $('.select2').on('select2:select', function(e) {
+                var product = e.params.data.text.split('|');
+                var unit = product[1].trim();
+                $('#stok-label').html(unit);
+
+                var stock = $(".select2").select2({
+                    theme: 'bootstrap4',
+                    placeholder: 'Pilih Barang',
+                }).find(":selected").data("stock") ?? 0;
+
+                $('#stock').val(0);
+                $('#current-stock').val(stock);
+            });
+
+            $("#stock").keyup(function() {
+                $(this).change();
+            });
+            $('#stock').change(function(e) {
+                var stock = $(".select2").select2({
+                    theme: 'bootstrap4',
+                    placeholder: 'Pilih Barang',
+                }).find(":selected").data("stock") ?? 0;
+
+                $('#current-stock').val(parseInt(stock) + parseInt(e.target.value));
             });
 
             $('#example1 tbody').on('click', '.btn-delete', function() {

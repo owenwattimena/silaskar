@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\IncomingProduct;
 use App\Helpers\ResponseFormatter;
+use Illuminate\Support\Facades\Validator;
 
 class IncomingProductController extends Controller
 {
@@ -33,12 +34,16 @@ class IncomingProductController extends Controller
 
     public function post(Request $request)
     {
-        
-        $request->validate([
-        'created_at' => 'required',
-        'product_id' => 'required|numeric',
-        'stock'      => 'required|numeric',
+
+        $validator = Validator::make($request->all(), [
+            'created_at' => 'required',
+            'product_id' => 'required|numeric',
+            'stock'      => 'required|numeric|min:0|not_in:0'
         ]);
+
+        if ($validator->fails()) {
+            return ResponseFormatter::error($validator->messages(), "Periksa kembali inputan anda", 200);
+        }
         
         $product        = Product::findOrFail($request->product_id);
         
@@ -68,8 +73,9 @@ class IncomingProductController extends Controller
         $request->validate([
             'edit_created_at' => 'required',
             'edit_product_id' => 'required|numeric',
-            'edit_stock'      => 'required|numeric',
+            'edit_stock'      => 'required|numeric|min:0|not_in:0',
         ]);
+        
         $product        = Product::findOrFail($request->edit_product_id);
         
         $incomingProduct                 = IncomingProduct::findOrFail($id);
